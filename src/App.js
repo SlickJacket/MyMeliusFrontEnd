@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ProfilePage from './ProfilePage';
-import HomePage from './HomePage';
+// import ProfilePage from './ProfilePage';
+// import HomePage from './HomePage';
 import LoginSignup from './LoginSignup'
 import { Switch, Route, withRouter } from 'react-router-dom'
+
 
 class App extends Component {
   state = {
@@ -27,11 +28,11 @@ class App extends Component {
     console.log(this.props)
     return (
       <Switch>
-        <Route
+        {/* <Route
           path={'/profile'}
-          render={routerProps => <ProfilePage {...routerProps} email={this.state.email}/>} />
-        <Route path={'/loginsignup'} component={LoginSignup />
-        <Route path={'/'} component={HomePage} />
+          render={routerProps => <ProfilePage {...routerProps} email={this.state.email}/>} /> */}
+        <Route path={'/loginsignup'} component={LoginSignup} />
+        {/* <Route path={'/'} component={HomePage} /> */}
       </Switch>
     )
   }

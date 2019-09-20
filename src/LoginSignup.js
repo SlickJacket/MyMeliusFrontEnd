@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import Login from './Login';
-import SignUp from './SignUp';
+import SignUp from './Signup';
+import './LoginSignupCSS.css';
 
 class LoginSignup extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
+    state = {
+        
     }
+
     render() { 
-        return (  
-            <Login />
-            <SignUp />
+        
+        return ( 
+            <div >
+                <div id="head">
+                    <img src="../Melius_Logo2.png" id="logo" />
+                    <h1>Melius</h1>
+                </div>
+                
+                <div id="loginmain">
+                    <div id="userlogin"><Login /></div>
+                    <div class="line"></div>
+                    <div id="usersignup"><SignUp /></div>
+                </div>
+            </div>
+
         );
     }
 }
