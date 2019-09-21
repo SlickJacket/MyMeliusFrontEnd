@@ -1,0 +1,78 @@
+#profileHeader {
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+    padding-top: 1%;
+    width: 100%;
+    height: 9em;
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 7%; 
+    height: auto;
+    position: relative;
+    left: 2%;
+    bottom: 18%;
+}
+
+#profileCompName {
+    padding-left: 1%;
+    color: #febe46;
+    font-family: 'Abril Fatface', cursive;
+    font-size:  350%;
+    position: relative;
+    left: 2%;
+    bottom: 18%;
+
+}
+
+#hamburger {
+    position: relative;
+    left: 57%;
+    bottom: 15%;
+    border-radius: 20%;
+    
+    
+}
+
+button:focus {outline:0;}
+
+.searchbar {
+    position: relative;
+    left: 55%;
+    bottom: 15%;
+}
+
+#leaveReview {
+    background-color: white;
+    width: 100%;
+    height: 20em;
+    box-sizing: border-box;
+    position: absolute;
+    top: 65%;
+}
+
+#reviews {
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 28em;
+    box-sizing: border-box;
+    position: absolute;
+    top: 110%;
+}
+
+#footer {
+    background-color: white;
+    width: 100%;
+    height: 9em;
+    box-sizing: border-box;
+    position: absolute;
+    top: 180%;
+}
+
+
+
+
