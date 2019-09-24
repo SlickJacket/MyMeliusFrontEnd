@@ -4,9 +4,9 @@ import SignUp from './Signup';
 import './LoginSignupCSS.css';
 
 class LoginSignup extends Component {
-    state = {
-        
-    }
+    
+
+    
 
     render() { 
         
@@ -18,9 +18,9 @@ class LoginSignup extends Component {
                 </div>
                 
                 <div id="loginmain">
-                    <div id="userlogin"><Login /></div>
+                    <div id="userlogin"><Login getProfile={this.props.getProfile} /></div>
                     <div class="line"></div>
-                    <div id="usersignup"><SignUp /></div>
+                    <div id="usersignup"><SignUp getProfile={this.props.getProfile} /></div>
                 </div>
             </div>
 

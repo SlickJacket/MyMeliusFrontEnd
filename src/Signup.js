@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component }  from 'react';
 import { withRouter } from 'react-router-dom';
 
 class SignUp extends Component {
@@ -7,30 +7,35 @@ class SignUp extends Component {
         password: "",
         email: "",
         title: "",
-        company_id: 1
+        company_id: '',
+        user_id: ''
     }
+
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
     
-    
-    handleSubmit = (e) => {
-        e.preventDefault()
-        fetch('http://localhost:3000/signup', {
-                method: 'POST',
-                headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(res => res.json())
+
+handleSubmit = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
     .then(data => {
-        if (data.token) {
-        localStorage.token = data.token
-            // console.log(this.props.history)
-        this.props.history.push('/profile')
+        console.log(data)
+        if (!data.errors) {
+            localStorage.token = data.token
+            localStorage.email = data.user.email
+            localStorage.id = data.user.id
+            this.props.getProfile()
+            this.props.history.push('/profile')
         }
     })
 }
@@ -68,8 +73,18 @@ class SignUp extends Component {
                         </span>
                         </label><br/>
 
+        <label className="field a-field a-field_a1">
+                        <input onChange={this.handleChange} value={this.state.company_id}name="company_id" className="field__input a-field__input" placeholder="e.g. Sales Manager" required />
+                        <span className="a-field__label-wrap">
+                        <span className="a-field__label">Company ID</span>
+                        </span>
+                        </label><br/>
+
+                            
+
             <input className="signupbutton" type="submit" value="Signup"/>
         </form>
+
         </div>
         );
     }

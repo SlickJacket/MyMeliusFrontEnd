@@ -1,0 +1,22 @@
+#hamburgerorange {
+    position: relative;
+    left: 57%;
+    bottom: 15%;
+    border-radius: 20%;
+    background-color: #febe46;
+}
+
+#companyMain {
+    width: 100%;
+    height: 19em;
+    box-sizing: border-box;
+    background-color: white;
+
+}
+
+#companyName {
+    position: relative;
+    top: 40%;
+    left: 25%;
+}
+

@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import './ProfileCSS.css';
 import { HamburgerArrow } from 'react-animated-burgers'
 import ReactSearchBox from 'react-search-box'
+import './CompanyProfileCss.css'
 
-
-class ProfilePage extends Component {
-        state = {
-        isActive: false
-        }
-
-        
+class CompanyProfile extends Component {
     
-        toggleButton = () => {
-            this.setState({
-            isActive: !this.state.isActive
-        })
+        state = {
+
         }
 
         handleClick = () => {
@@ -22,17 +14,20 @@ class ProfilePage extends Component {
             this.props.history.push('/loginsignup')
         } 
 
-        
-    render() { 
-            console.log(this.props)
-        return ( 
+        handleButtonClick = (e) => {
+            e.preventDefault();
 
-            
+            fetch('http://localhost:3000/companies')
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+
+    render() { 
+        return ( 
             <div>
-                
-                <div id="profileHeader">
-                    <img src="../Melius_Logo2Black.png" id="logo" />
-                    <h1 id="profileCompName">Melius</h1>
+            <div id="head">
+                    <img src="../Melius_Logo2.png" id="logo" />
+                    <h1>Melius</h1>
 
                     <button className="logout" onClick={this.handleClick}>Logout</button>
 
@@ -40,17 +35,13 @@ class ProfilePage extends Component {
                     <ReactSearchBox  placeholder=""value="Doe"data={this.data}callback={record => console.log(record)}/>
                     </div>
 
-                    {this.props.company_id}
-
-                    <HamburgerArrow id="hamburger" isActive={this.state.isActive} toggleButton={this.toggleButton}  />
+                    <HamburgerArrow id="hamburgerorange" isActive={this.state.isActive} toggleButton={this.toggleButton}  />
                     
-                </div>
-                <div id="userMain">
-                        <h3 id="username">{this.props.name}</h3>
-                        
-                </div>
+                    <button onClick={this.handleButtonClick}></button>
 
-                <div id="leaveReview">
+                </div>
+                <div id="companyMain">
+                        <h3 id="companyName">Company Name</h3>
                         
                 </div>
 
@@ -63,8 +54,8 @@ class ProfilePage extends Component {
                 </div>
                 
             </div>
-        );
+            );
     }
 }
 
-export default ProfilePage;
+export default CompanyProfile;
