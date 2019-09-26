@@ -19,7 +19,7 @@ class SignUp extends Component {
 
 handleSubmit = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/login', {
+    fetch('http://localhost:3000/signup', {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
@@ -60,7 +60,7 @@ handleSubmit = (e) => {
                         </label>
 
             <label className="field a-field a-field_a1">
-                        <input onChange={this.handleChange} value={this.state.password} name="password"className="field__input a-field__input" type="password" placeholder="password" required />
+                        <input onChange={this.handleChange} value={this.state.password} name="password" className="field__input a-field__input" type="password" placeholder="password" required />
                         <span className="a-field__label-wrap">
                         <span className="a-field__label">Password</span>
                         </span>

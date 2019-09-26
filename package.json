@@ -10,6 +10,7 @@
     "multer-s3": "^2.9.0",
     "path": "^0.12.7",
     "react": "^16.9.0",
+    "react-advanced-form": "^1.7.2",
     "react-animated-burgers": "^1.2.7",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",

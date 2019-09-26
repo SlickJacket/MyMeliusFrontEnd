@@ -60,6 +60,28 @@ button:focus {outline:0;}
     box-sizing: border-box;
 }
 
+#userDetails {
+    position: relative;
+    left: 40%;
+    top: -180%;
+}
+
+#profileDetails {
+    position: relative;
+    left: 40%;
+    top: -180%;
+}
+
+#image {
+    height: 30%;
+    width: 30%; 
+    position: relative;
+    left: 8%;
+    margin-top: 1.5%;
+
+   
+}
+
 #username {
     color: white;
     position: relative;
@@ -75,6 +97,15 @@ button:focus {outline:0;}
     top: 65%;
 }
 
+#profileReviews {
+    background-color: white;
+    width: 100%;
+    height: 40em;
+    box-sizing: border-box;
+    position: absolute;
+    top: 65%;
+}
+
 #reviews {
     background-color: #1a1a1a;
     width: 100%;
@@ -82,6 +113,8 @@ button:focus {outline:0;}
     box-sizing: border-box;
     position: absolute;
     top: 125%;
+    left: 8%;
+    display: flexbox;
 }
 
 #footer {
@@ -93,6 +126,34 @@ button:focus {outline:0;}
     top: 180%;
 }
 
+#profileFooter {
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 1em;
+    box-sizing: border-box;
+    position: absolute;
+    top: 165%;
+}
+
+#reviewerNames {
+    /* background-color: red; */
+    width: 4%;
+}
+
+#reviewerCommentsAndRatings {
+    position: relative;
+    left:4%;
+    margin: 0;
+    bottom: 67.5%;
+    width: 50%;
+    /* background-color: red; */
+}
+
+#emploeeTitle {
+    position: relative;
+    bottom: 110%;
+    left: 36%;
+}
 
 
 

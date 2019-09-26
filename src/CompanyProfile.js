@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { HamburgerArrow } from 'react-animated-burgers'
 import ReactSearchBox from 'react-search-box'
 import './CompanyProfileCss.css'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class CompanyProfile extends Component {
     
         state = {
+            name: "", 
+            address: "", 
+            phone_number: "", 
+            logo_url: "",
+            users: []
 
         }
 
@@ -22,7 +28,40 @@ class CompanyProfile extends Component {
                 .then(data => console.log(data));
         }
 
+        componentDidMount() {
+            
+            fetch(`http://localhost:3000/companies/${this.props.location.state.company_id}`)
+            .then(res => res.json())
+            .then(c => this.setState({name: c.name, address: c.address, phone_number: c.phone_number, logo_url: c.logo_url, users: c.users}))
+            
+        
+        }
+
+        renderUsers = () => {
+
+            return this.state.users.map(function(user) {
+                
+                
+            return <div><p style={{color: "red"}}><Link to={{
+                pathname: '/users',
+                state: { 
+                    name: user.name,
+                    email: user.email,
+                    title: user.title,
+                    company_id: user.company_id,
+                    user_id: user.id,
+                    user_rating: user.user_rating
+
+                }
+            }}>{user.name}</Link></p> <p style={{color: "red"}}>{user.title}</p> <p style={{color: "yellow"}}>{user.user_rating}</p></div>
+            })
+        }
+
+
+
     render() { 
+
+        console.log(this.state.users[0])
         return ( 
             <div>
             <div id="head">
@@ -41,12 +80,14 @@ class CompanyProfile extends Component {
 
                 </div>
                 <div id="companyMain">
-                        <h3 id="companyName">Company Name</h3>
+                        <h3 id="companyName">{this.props.location.state.name}</h3>
                         
                 </div>
 
                 <div id="reviews">
-
+                        <h2 id="emploeeTitle">Employees</h2>
+                        <div>{this.renderUsers()}</div>
+                        
                 </div>
 
                 <div id="footer">
