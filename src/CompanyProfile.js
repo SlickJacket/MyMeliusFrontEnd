@@ -11,9 +11,33 @@ class CompanyProfile extends Component {
             address: "", 
             phone_number: "", 
             logo_url: "",
-            users: []
+            ratings: [],
+            users: [],
+            rating: ""
 
         }
+
+
+        componentDidMount() {
+            
+            fetch(`http://localhost:3000/companies/${this.props.location.state.company_id}`)
+            .then(res => res.json())
+            .then(c => { this.setState({name: c.name, address: c.address, phone_number: c.phone_number, logo_url: c.logo_url, users: c.users})
+            
+            fetch(`http://localhost:3000/ratings/${this.props.location.state.company_id}`)
+            .then(res => res.json())
+            .then(data => this.setState({ ratings: data}))
+            
+            
+        })
+
+        
+
+    
+            
+        
+        }
+
 
         handleClick = () => {
             localStorage.clear()
@@ -28,40 +52,58 @@ class CompanyProfile extends Component {
                 .then(data => console.log(data));
         }
 
-        componentDidMount() {
+        // renderUsers = () => {
+
             
-            fetch(`http://localhost:3000/companies/${this.props.location.state.company_id}`)
-            .then(res => res.json())
-            .then(c => this.setState({name: c.name, address: c.address, phone_number: c.phone_number, logo_url: c.logo_url, users: c.users}))
             
-        
-        }
+
+        //     return this.state.users.map(function(user) {
+
+                
+                
+        //     return <div><p style={{color: "red"}}><Link to={{
+        //         pathname: '/users',
+        //         state: { 
+        //             name: user.name,
+        //             email: user.email,
+        //             title: user.title,
+        //             company_id: user.company_id,
+        //             user_id: user.id,
+        //             user_rating: user.user_rating,
+        //             average: user.average
+
+        //         }
+        //     }}>{user.name}</Link></p> <p style={{color: "red"}}>{user.title}</p> <p style={{color: "yellow"}}>5</p></div>
+        //     })
+        // }
+
 
         renderUsers = () => {
-
-            return this.state.users.map(function(user) {
-                
-                
-            return <div><p style={{color: "red"}}><Link to={{
-                pathname: '/users',
-                state: { 
-                    name: user.name,
-                    email: user.email,
-                    title: user.title,
-                    company_id: user.company_id,
-                    user_id: user.id,
-                    user_rating: user.user_rating
-
-                }
-            }}>{user.name}</Link></p> <p style={{color: "red"}}>{user.title}</p> <p style={{color: "yellow"}}>{user.user_rating}</p></div>
-            })
-        }
+            return this.state.ratings.map(function(user) {
+                return <div><p style={{color: "red"}}><Link to={{
+                    pathname: '/users',
+                    state: { 
+                        name: user.name,
+                        email: user.email,
+                        title: user.title,
+                        company_id: user.company_id,
+                        user_id: user.id,
+                        user_rating: user.user_rating,
+                        average: user.average
+    
+                    }
+                }}>{user.name}</Link></p> <p style={{color: "red"}}>{user.title}</p> <p style={{color: "yellow"}}>{user.rating}</p></div>
+        })
+    }
 
 
 
     render() { 
 
-        console.log(this.state.users[0])
+        // console.log(this.renderUsersAndRatings())
+        // console.log(this.state.users)
+        // console.log(this.state.ratings[0])
+
         return ( 
             <div>
             <div id="head">

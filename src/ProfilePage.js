@@ -3,6 +3,8 @@ import './ProfileCSS.css';
 import { HamburgerArrow } from 'react-animated-burgers'
 import ReactSearchBox from 'react-search-box'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import StarRatingComponent from 'react-star-rating-component';
+import 'react-rater/lib/react-rater.css'
 
 
 class ProfilePage extends Component {
@@ -14,10 +16,15 @@ class ProfilePage extends Component {
         reviewing_users: [],
         reviewed_users: [],
         ratings: [],
-        averageRating: ""
+        averageRating: "",
+        rating: "",
+        myReviewers: []
         }
 
         componentDidMount() {
+
+            window.scrollTo(0, 0)
+
             if (localStorage.token) {
                 fetch('http://localhost:3000/profile',{
                 headers: {
@@ -28,30 +35,42 @@ class ProfilePage extends Component {
                 .then(user => {
                     this.setState({company: user.company, reviewees: user.reviewees, reviewers: user.reviewers, reviewing_users: user.reviewing_users, reviewed_users: user.reviewed_users})
                     
-                    let array = []
+                //     let array = []
 
-                    user.reviewing_users.map(function(review) {
-                        array.push(review.rating)
-                    })
+                //     user.reviewing_users.map(function(review) {
+                //         array.push(review.rating)
+                //     })
 
-                    this.setState({ratings: array})
+                //     this.setState({ratings: array})
 
-                    fetch(`http://localhost:3000/users/${this.props.user_id}`, {
-                    method: "PATCH",
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.token}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({ 
-                            "user_rating": this.renderAverageRating()
-                    })
-                })
-                })
+                //     fetch(`http://localhost:3000/users/${this.props.user_id}`, {
+                //     method: "PATCH",
+                //     headers: {
+                //         'Authorization': `Bearer ${localStorage.token}`,
+                //         'Content-Type': 'application/json',
+                //         'Accept': 'application/json'
+                //     },
+                //     body: JSON.stringify({ 
+                //             "user_rating": this.renderAverageRating()
+                //     })
+                // })
 
+                fetch(`http://localhost:3000/useraverage/${user.id}`)
+                .then(res => res.json())
+                .then(data => this.setState({rating: data}))
+
+                fetch(`http://localhost:3000/datetime/${user.id}`)
+                .then(res => res.json())
+                .then(data => this.setState({myReviewers: data}))
+
+            })
+
+            
                 
             }
         }
+
+            
             
 
         
@@ -67,30 +86,24 @@ class ProfilePage extends Component {
             this.props.history.push('/loginsignup')
         } 
 
-        renderReviews = () => {
-            return this.state.reviewing_users.map(function(review) {
+        // renderReviews = () => {
+        //     return this.state.reviewing_users.map(function(review) {
                 
-                return <li >{review.rating} {review.comment}</li>
+        //         return <li >{review.rating} {review.comment}</li>
+        //     })
+        // }
+
+        renderMyReviewers =() => {
+            return this.state.myReviewers.map(function(user) {
+                return <div><p>{user.reviewername}</p> <p><StarRatingComponent 
+                className="usersRatings"
+                starCount={5}
+                editing={false}
+                value={user.rating}
+                /> </p> <p>{user.comment}</p><p style={{fontSize: "10px"}}>{user.dateposted}</p><div id="reviewerDivider"></div></div>
             })
         }
 
-        renderAverageRating = () => {
-            let total = 0;
-
-            for(var i = 0; i < this.state.ratings.length; i++) {
-                total += this.state.ratings[i];
-            }
-
-            let avg = total / this.state.ratings.length;
-            let flt = parseFloat(Math.round(avg * 100) / 100).toFixed(2);
-            if (this.state.ratings.length === 0) {
-            
-            return "N/A";
-        } else {
-                let tostring = flt.toString()
-            return tostring;
-        }
-    }
         
 
         
@@ -99,7 +112,7 @@ class ProfilePage extends Component {
         // let li =document.querySelectorAll('li')
         // console.log(li.innerText)
         // console.log(this.renderAverageRating())
-        console.log(this.state.averageRating)
+        console.log(this.state.rating)
 
         return ( 
 
@@ -140,16 +153,25 @@ class ProfilePage extends Component {
                             logo_url: this.state.company.logo_url
 
                         }
-                    }}>{this.state.company.name}</Link> {this.props.user_rating}</p>
+                    }}>{this.state.company.name}</Link> </p> <div id="stars">
+                    <StarRatingComponent 
+                        className="myRating"
+                        starCount={5}
+                        editing={false}
+                        value={this.state.rating}
+                        />
+                        <h1 id="myRatingNum">{this.state.rating}</h1>
+                    </div>
                             <p style={{color: 'white'}}>{this.state.company.address}</p>
                         </div>
 
                         
 
                 </div>
-
+                <div id="profRevWrapper">
                 <div id="profileReviews">
-                    <ul>{this.renderReviews()}</ul>
+                    <div id="reviewerCommentsAndRatings">{this.renderMyReviewers()}</div>
+                </div>
                 </div>
 
                 <div id="profileFooter">

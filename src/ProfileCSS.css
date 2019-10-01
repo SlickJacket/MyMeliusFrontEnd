@@ -1,3 +1,7 @@
+
+
+
+
 #profileHeader {
     background-color: white;
     display: flex;
@@ -79,7 +83,6 @@ button:focus {outline:0;}
     left: 8%;
     margin-top: 1.5%;
 
-   
 }
 
 #username {
@@ -97,24 +100,46 @@ button:focus {outline:0;}
     top: 65%;
 }
 
-#profileReviews {
+#profRevWrapper {
     background-color: white;
-    width: 100%;
+    width:100%;
     height: 40em;
     box-sizing: border-box;
     position: absolute;
     top: 65%;
 }
 
+#profileReviews {
+    background-color: white;
+    width: 50%;
+    height: 30em;
+    box-sizing: border-box;
+    position: absolute;
+    top: 14%;
+    overflow: auto;
+    overflow-x: hidden;
+    border-radius: 2%;
+}
+
 #reviews {
-    background-color: #1a1a1a;
-    width: 100%;
-    height: 22em;
+    background-color: white;
+    width: 60%;
+    height: 50%;
     box-sizing: border-box;
     position: absolute;
     top: 125%;
-    left: 8%;
-    display: flexbox;
+    left: 2%;
+    /* left: 8%; */
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    /* flex-direction: column-reverse; */
+    overflow: auto;
+    border-radius: 2%;
+    
+    
+
+    
+
 }
 
 #footer {
@@ -136,17 +161,26 @@ button:focus {outline:0;}
 }
 
 #reviewerNames {
-    /* background-color: red; */
+    /* background-color: blue; */
+    padding-left: 2%;
     width: 4%;
+    position: absolute;
+    /* top: 14%; */
+    /* display: flex;
+    justify-content: flex-start;
+    flex-direction: column-reverse; */
+    
 }
 
 #reviewerCommentsAndRatings {
-    position: relative;
-    left:4%;
-    margin: 0;
-    bottom: 67.5%;
-    width: 50%;
-    /* background-color: red; */
+    /* background-color: grey; */
+    position: absolute;
+    left: 2%;
+    top: 5%;
+    padding-left: 4%;
+    /* display: flex;
+    justify-content: flex-start;
+    flex-direction: column-reverse; */
 }
 
 #emploeeTitle {
@@ -154,6 +188,79 @@ button:focus {outline:0;}
     bottom: 110%;
     left: 36%;
 }
+
+.commentinput {
+    overflow: scroll;
+    resize: none;
+    outline: none;
+    width: 70%;
+    height: 11em;
+    position: absolute;
+    top: 24%;
+    left: 2%;
+    border-color: #febe46;
+    font-size: 18px;
+}
+
+.reviewLabel {
+    position: absolute;
+    top: 6.5%;
+    left: 2%;
+    text-decoration: underline;
+}
+
+.reviewSubmit {
+    position: absolute;
+    top: 86%;
+    left: 75%;
+    width: 8%;
+    height: auto;
+    background-color: #febe46;
+    border-radius: 8%;
+    outline: none;
+    font-weight: bold;
+}
+
+.ratinginput {
+    position: absolute;
+    
+    left: 11%;
+    bottom: -5%;
+    font-size: 2em;
+    
+}
+
+.myRating {
+    font-size: 4em;
+}
+
+#myRatingNum {
+    position: absolute;
+    left: 35%;
+}
+
+#stars {
+    position: absolute;
+    left: 26%;
+    top: -15%;
+}
+
+.usersRatings {
+    position: absolute;
+    /* top: 20%; */
+}
+
+#reviewerDivider {
+    display: block;
+    height: 1px;
+    width: 400%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
 
 
 
