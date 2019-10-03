@@ -77,12 +77,21 @@ button:focus {outline:0;}
 }
 
 #image {
-    height: 30%;
-    width: 30%; 
+    height: 300px;
+    width: 300px; 
     position: relative;
     left: 8%;
     margin-top: 1.5%;
+    border-radius: 50%;
+}
 
+#compImg {
+    height: 250px;
+    width: 250px; 
+    position: relative;
+    left: 8%;
+    margin-top: 1.5%;
+    border-radius: 50%;
 }
 
 #username {
@@ -184,9 +193,12 @@ button:focus {outline:0;}
 }
 
 #emploeeTitle {
-    position: relative;
-    bottom: 110%;
-    left: 36%;
+    color: #febe46;
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    font-size:  250%;
+    
 }
 
 .commentinput {
@@ -236,7 +248,7 @@ button:focus {outline:0;}
 
 #myRatingNum {
     position: absolute;
-    left: 35%;
+    left: 44%;
 }
 
 #stars {
@@ -258,6 +270,93 @@ button:focus {outline:0;}
     border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0;
+}
+
+#imgPreview {
+    max-width: 400px;
+    max-height: 400px;
+
+}
+
+#imgPrev {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 72%;
+    bottom: 28%;
+
+    border-radius: 50%;
+}
+
+#employees {
+    background-color: #1a1a1a;
+    width: 95%;
+    height: 80%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 90%;
+    left: 2%;
+    /* left: 8%; */
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    /* flex-direction: column-reverse; */
+    overflow: auto;
+    border-radius: 2%;
+}
+
+#employeeFlex {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    align-content: space-evenly;
+    flex-flow: column wrap;
+    
+
+}
+
+#employeePics {
+    height: 300px;
+    border-radius: 50%;
+}
+
+#employeeInfo {
+    position: absolute;
+    left: 150%;
+    bottom: 50%;
+    /* background-color: pink; */
+    width: 150%;
+    
+}
+
+#employeesEntire {
+    position: relative;
+    right: 35%;
+}
+
+#employeeStars {
+    position: absolute;
+    left: 65%;
+    top: -15%;
+    /* background-color: pink; */
+    width: 100%;
+}
+
+#empRat {
+    position: absolute;
+    left: 31%;
+}
+
+#companyDetails {
+    position: relative;
+    left: 37%;
+    top: -55%;
+}
+
+#compMap {
+    position: absolute;
+    left:28%; 
+    top: -105%;
+    height: 250%;;
 }
 
 

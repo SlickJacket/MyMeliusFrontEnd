@@ -112,7 +112,7 @@ class ProfilePage extends Component {
         // let li =document.querySelectorAll('li')
         // console.log(li.innerText)
         // console.log(this.renderAverageRating())
-        console.log(this.state.rating)
+        console.log(this.props.image_url)
 
         return ( 
 
@@ -136,7 +136,7 @@ class ProfilePage extends Component {
                 <div id="userMain">
 
                     <div>
-                        <img src='./sarah-unsplash.png'  id="image" />
+                        <img src={this.props.image_url}  id="image" />
                     </div>
 
 

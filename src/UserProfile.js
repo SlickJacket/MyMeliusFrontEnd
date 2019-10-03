@@ -21,7 +21,8 @@ class UserProfile extends Component {
         ratings: [],
         averageRating: "",
         myRating: "",
-        myReviewers: []
+        myReviewers: [],
+        imageURL: ''
         }
 
         componentDidMount() {
@@ -31,7 +32,7 @@ class UserProfile extends Component {
             } else {
                 fetch(`http://localhost:3000/users/${this.props.location.state.user_id}`)
                 .then(res => res.json())
-                .then(user => { this.setState({company: user.company, reviewees: user.reviewees, reviewers: user.reviewers, reviewing_users: user.reviewing_users, reviewed_users: user.reviewed_users})
+                .then(user => { this.setState({company: user.company, reviewees: user.reviewees, reviewers: user.reviewers, reviewing_users: user.reviewing_users, reviewed_users: user.reviewed_users, imageURL: user.image_url})
                 
                 fetch(`http://localhost:3000/useraverage/${user.id}`)
                 .then(res => res.json())
@@ -92,7 +93,7 @@ class UserProfile extends Component {
                     })})
                     
                     this.setState({rating: "", comment: ""})
-                    // window.location.reload(false)
+                    window.location.reload(false)
             }
                     
         renderReviews = () => {
@@ -120,8 +121,8 @@ class UserProfile extends Component {
         }
 
     render() { 
-        console.log(this.myReviewers())
-        
+        // console.log(this.state.myReviewers)
+        console.log(this.state.imageURL)
         return ( 
 
             
@@ -145,7 +146,7 @@ class UserProfile extends Component {
                 <div id="userMain">
 
                     <div>
-                        <img src='./sarah-unsplash.png'  id="image" />
+                        <img src={this.state.imageURL} id="image" />
                     </div>
 
 

@@ -73,8 +73,8 @@ h2 {
 .signupbutton {
     background-color: #febe46;
     color: white;
-    margin-top: 20%;
-    margin-left: 30%;
+    margin-top: 1%;
+    margin-left: 80%;
     border-color: #febe46;
     border-radius: 10%;
     /* padding: 5%; */
@@ -279,3 +279,14 @@ h2 {
     --fieldBorderColor: #D1C4E9;
     --fieldBorderColorActive: #febe46;
   }
+
+  #previewDiv {
+    /* background-color: red; */
+    max-height: 400px;
+    max-width: 400px;
+    position: relative;
+    /* left: 10%; */
+    bottom: 40%;
+    z-index: 99999999;
+    
+}

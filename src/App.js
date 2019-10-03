@@ -9,6 +9,7 @@ import UserProfile from './UserProfile';
 // import { isError } from 'util';
 
 
+
 class App extends Component {
   state = {
     email: '',
@@ -18,7 +19,8 @@ class App extends Component {
     company_id: '',
     user_rating: "",
     logo_url: "",
-    average: ""
+    average: "",
+    image_url: ''
   }
 
   componentDidMount() {
@@ -29,7 +31,7 @@ class App extends Component {
         }
       })
       .then(res => res.json())
-      .then(user => this.setState({email: user.email, name: user.name, title: user.title, user_id: user.id, company_id: user.company_id, user_rating: user.user_rating, logo_url: user.logo_url, averageRating: user.average} ))
+      .then(user => this.setState({email: user.email, name: user.name, title: user.title, user_id: user.id, company_id: user.company_id, user_rating: user.user_rating, logo_url: user.logo_url, averageRating: user.average, image_url: user.image_url} ))
     } else {
       this.props.history.push('/loginsignup')
     }
@@ -44,7 +46,7 @@ getProfile = () => {
     .then(res => res.json())
     .then(user => {
       console.log(user)
-        this.setState({email: user.email, user_id: user.id, name: user.name, title: user.title, company_id: user.company_id, logo_url: user.logo_url, user_rating: user.user_rating, averageRating: user.average})
+        this.setState({email: user.email, user_id: user.id, name: user.name, title: user.title, company_id: user.company_id, logo_url: user.logo_url, user_rating: user.user_rating, averageRating: user.average, image_url: user.image_url})
     })
 }
 
@@ -60,7 +62,7 @@ getProfile = () => {
       <Switch>
         <Route
           path={'/profile'}
-    render={routerProps => <ProfilePage {...routerProps} email={this.state.email} name={this.state.name} title={this.state.title} user_id={this.state.user_id} company_id={this.state.company_id} user_photo={this.state.logo_url} user_rating={this.state.user_rating} getCompany={this.getCompany} averageRating={this.state.average}/>} />
+    render={routerProps => <ProfilePage {...routerProps} email={this.state.email} name={this.state.name} title={this.state.title} user_id={this.state.user_id} company_id={this.state.company_id} user_photo={this.state.logo_url} user_rating={this.state.user_rating} getCompany={this.getCompany} averageRating={this.state.average} image_url={this.state.image_url}/>} />
           <Route
           path={'/loginsignup'}
           render={routerProps => <LoginSignup {...routerProps}  getProfile={this.getProfile} />} />
